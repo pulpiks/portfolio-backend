@@ -1,0 +1,18 @@
+version: '3'
+services: 
+  db: 
+    image: postgres:latest
+    restart: always
+    ports: 
+      - "5432:5432"
+    volumes:
+      - /var/lib/docker/volumes/postgres:/var/lib/postgresql/data
+  backend:
+    image: node:10.15-alpine
+    build:
+      ./docker/backend
+    restart: always
+    link:
+      db:database
+    ports: 
+      - "80:8080"   
