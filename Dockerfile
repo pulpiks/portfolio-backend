@@ -1,4 +1,4 @@
-FROM node:10.15-alpine
+FROM node:10.15
 
 # Create app directory
 WORKDIR /usr/src/app
@@ -15,5 +15,7 @@ RUN npm i
 # Bundle app source
 COPY . .
 
+ENV LC_ALL="C.utf-8" LANGUAGE="C.utf-8" LANG="C.utf-8" DEBUG="sequelize" NODE_ENV="docker" SERVE_STATIC="1"
+
 EXPOSE 8080
-CMD [ "npm", "run", "run-server" ]
+CMD ["./run.sh"]

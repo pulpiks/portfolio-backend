@@ -1,0 +1,5 @@
+module.exports = {
+  'config': './server/config/config.json',
+  'models-path': './server/models',
+  'migrations-path': './migrations'
+}
